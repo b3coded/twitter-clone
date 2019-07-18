@@ -14,16 +14,16 @@ export const dark = {
   buttonDefaultHoverColor: "#FFF",
   buttonDefaultActiveColor: "#FFF",
   buttonDefaultFocusColor: "#F5F5F5",
-  buttonPrimaryColor: "#1990DA",
-  buttonPrimaryHoverColor: "#1990DA",
-  buttonPrimaryActiveColor: "#1990DA",
-  buttonPrimaryFocusColor: "#1990DA",
+  buttonPrimaryColor: "#1DA1F2",
+  buttonPrimaryHoverColor: "#1DA1F2",
+  buttonPrimaryActiveColor: "#1DA1F2",
+  buttonPrimaryFocusColor: "#1DA1F2",
   dividerColor: "#ffffff12"
 };
 
 export const light = {
   background: "#FFF",
-  primaryColor: "#1990DA",
+  primaryColor: "#1DA1F2",
   secondaryColor: "",
   textColor: "#15212B",
   buttonTextColor: "#15212B",
@@ -32,10 +32,10 @@ export const light = {
   buttonDefaultHoverColor: "#FFF",
   buttonDefaultActiveColor: "#FFF",
   buttonDefaultFocusColor: "#F5F5F5",
-  buttonPrimaryColor: "#1990DA",
-  buttonPrimaryHoverColor: "#1990DA",
-  buttonPrimaryActiveColor: "#1990DA",
-  buttonPrimaryFocusColor: "#1990DA",
+  buttonPrimaryColor: "#1DA1F2",
+  buttonPrimaryHoverColor: "#1DA1F2",
+  buttonPrimaryActiveColor: "#1DA1F2",
+  buttonPrimaryFocusColor: "#1DA1F2",
   dividerColor: "#00000012"
 };
 

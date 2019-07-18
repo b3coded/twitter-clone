@@ -5,7 +5,7 @@ import AppTheme, { light, dark } from "./styles/theme";
 const mode = "light";
 
 function App() {
-  const theme = mode === "light" ? light : dark;
+  const theme = mode === "dark" ? light : dark;
   return (
     <AppTheme theme={theme}>
       <Routes />

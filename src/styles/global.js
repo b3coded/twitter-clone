@@ -12,12 +12,14 @@ export const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     width: 100vw;
     min-height: 100vh;
-    display: flex;
+    display: grid;
+    flex-direction: column;
   }
   #root{
     flex: 1;
     display: flex;
     flex-direction: column;
+    background: ${props => props.theme.background}
   }
   button{
     cursor: pointer;

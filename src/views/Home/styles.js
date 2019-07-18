@@ -1,25 +1,43 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  flex: 1;
-  background: ${props => props.theme.background};
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  grid-template-areas: "newtweet" "tweets" "destaques";
+
+  background-color: ${({ theme }) => theme.background};
   padding: 1rem;
-  padding: 1rem 200px;
+  border: 1px solid ${({ theme }) => theme.dividerColor};
+
+  @media only screen and (min-width: 767px) {
+    grid-gap: 10px;
+    margin: 1rem 200px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "newtweet destaques"
+      "tweets destaques";
+
+    grid-auto-flow: dense;
+  }
+`;
+export const Destaques = styled.ul`
+  grid-area: destaques;
 `;
 
-export const Button = styled.button`
-  padding: 0.5rem 2rem;
-  border: 1px solid ${props => props.theme.buttonTextColor};
-  color: ${props => props.theme.buttonTextColor};
-  background: ${props => props.theme.buttonDefaultColor};
-  transition: 0.3s all;
-  font-weight: 700;
-  font-size: 1.2rem;
-  border-radius: 2rem;
-  margin: 0.5rem;
+export const NewTweet = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-area: newtweet;
 
-  :hover {
-    color: ${props => props.theme.buttonTextHoverColor};
-    background: ${props => props.theme.buttonDefaultHoverColor};
+  textarea {
+    padding: 1rem;
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.textColor};
+    border: 1px solid ${({ theme }) => theme.primaryColor};
+    border-radius: 0.5rem;
+    resize: none;
+  }
+  button {
+    align-self: flex-end;
   }
 `;
