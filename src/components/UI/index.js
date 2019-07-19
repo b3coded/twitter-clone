@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
-const Divider = styled.hr`
-  border-bottom: 1px solid ${props => props.theme.dividerColor};
+export const SectionTitle = styled.h2`
+  color: ${({ theme }) => theme.textColor};
 `;
+
+const Divider = styled.hr`
+  border-bottom: 1px solid ${({ theme }) => theme.dividerColor};
+`;
+
 const Button = styled.button`
   padding: 0.5rem 1.5rem;
-  border: 1px solid ${props => props.theme.buttonPrimaryColor};
-  color: ${props => props.theme.buttonTextColor};
-  background: ${props => {
-    if (props.primary) return props.theme.buttonPrimaryColor;
-    else return props.theme.buttonDefaultColor;
+  border: 1px solid ${({ theme }) => theme.buttonPrimaryColor};
+  color: ${({ theme, primary }) => {
+    if (primary) return theme.buttonPrimaryTextColor;
+    else return theme.buttonDefaultTextColor;
+  }};
+  background: ${({ theme, primary }) => {
+    if (primary) return theme.buttonPrimaryColor;
+    else return theme.buttonDefaultColor;
   }};
   transition: 0.3s all;
   font-weight: 700;
@@ -20,8 +28,10 @@ const Button = styled.button`
   width: ${props => (props.block ? "-webkit-fill-available" : "fit-content")};
 
   :hover {
-    color: ${props => props.theme.buttonTextHoverColor};
-    background: ${props => props.theme.buttonDefaultHoverColor};
+    background: ${({ theme, primary }) => {
+      if (primary) return theme.buttonPrimaryColor;
+      else return theme.buttonDefaultColor;
+    }};
   }
 `;
 

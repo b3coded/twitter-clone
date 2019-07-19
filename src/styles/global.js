@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Muli', sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
+    transition: .3s, .2s;
   }
   body{
     margin: 0;
@@ -23,5 +24,20 @@ export const GlobalStyle = createGlobalStyle`
   }
   button{
     cursor: pointer;
+  }
+  ul{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    list-style: none;
+  }
+  h1, h2, h3, h4,h5,h6{
+    margin: 0.25rem 0.25rem 0.25rem 0 ;
+  }
+  p{
+    text-align: justify;
+    margin-bottom: .5rem;
   }
 `;

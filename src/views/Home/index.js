@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { Container, NewTweet, Destaques } from "./styles";
-import { Navbar, Tweets, UI } from "../../components";
+import { Container, NewTweet } from "./styles";
+import { Navbar, Tweets, UI, Destaques } from "../../components";
+import { SectionTitle } from "../../components/UI";
 const { Button, Divider } = UI;
 
 export default class Home extends Component {
@@ -14,7 +15,7 @@ export default class Home extends Component {
 
   componentDidMount() {
     let items = [];
-    for (let index = 0; index < 52; index++) {
+    for (let index = 1; index < 52; index++) {
       items.push(index);
     }
     this.setState({ tweets: items });
@@ -28,26 +29,14 @@ export default class Home extends Component {
         <Navbar />
         <Container>
           <NewTweet>
-            <textarea rows={3} />
+            <SectionTitle>Novo Tweet</SectionTitle>
+            <textarea rows={3} placeholder="O que está acontecendo?" />
             <Button primary>Tweetar</Button>
           </NewTweet>
 
           <Tweets data={tweets} />
 
-          <Destaques>
-            <li>Destaques</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-            <li>a</li>
-          </Destaques>
+          <Destaques data={tweets} />
         </Container>
       </Fragment>
     );

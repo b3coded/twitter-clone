@@ -28,7 +28,8 @@ export const Brand = styled.a`
 export const MenuToggle = styled.button`
   padding: 0.5rem 0.5rem 0.1rem 0.5rem;
   border: 1px solid ${({ theme }) => theme.buttonPrimaryColor};
-  color: ${({ theme }) => theme.buttonTextColor};
+
+  color: ${({ theme }) => theme.textColor};
   background: transparent;
   transition: 0.3s all;
   font-weight: 700;
@@ -54,7 +55,8 @@ export const Menu = styled.div`
   transition: 0.3s all;
   @media only screen and (min-width: 767px) {
     position: inherit;
-    width: 100%;
+    width: unset;
+    flex: 1;
     height: auto;
   }
 `;
@@ -77,6 +79,7 @@ export const MenuItems = styled.div`
     width: -webkit-fill-available;
     display: -webkit-box;
     padding: 0;
+    padding-left: 3rem;
   }
 `;
 export const MenuItem = styled.div`

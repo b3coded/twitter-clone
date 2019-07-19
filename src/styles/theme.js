@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import { ThemeProvider } from "styled-components";
+import { connect } from "react-redux";
 import { GlobalStyle } from "./global";
 
 // Themes
@@ -8,8 +9,10 @@ export const dark = {
   primaryColor: "#FFF",
   secondaryColor: "",
   textColor: "#FFF",
-  buttonTextColor: "#FFF",
-  buttonTextHoverColor: "#15212B",
+  textMutedColor: "#ccccccff",
+  buttonDefaultTextColor: "#FFF",
+  buttonPrimaryTextColor: "#FFF",
+  buttonPrimaryHoverTextColor: "#FFF",
   buttonDefaultColor: "transparent",
   buttonDefaultHoverColor: "#FFF",
   buttonDefaultActiveColor: "#FFF",
@@ -26,8 +29,11 @@ export const light = {
   primaryColor: "#1DA1F2",
   secondaryColor: "",
   textColor: "#15212B",
-  buttonTextColor: "#15212B",
+  textMutedColor: "#ccccccff",
+  buttonDefaultTextColor: "#15212BCC",
   buttonTextHoverColor: "#FFF",
+  buttonPrimaryTextColor: "#FFF",
+  buttonPrimaryHoverTextColor: "#FFF",
   buttonDefaultColor: "transparent",
   buttonDefaultHoverColor: "#FFF",
   buttonDefaultActiveColor: "#FFF",
@@ -40,13 +46,23 @@ export const light = {
 };
 
 // Styles init
-const AppTheme = ({ children, theme }) => (
-  <ThemeProvider theme={theme}>
-    <Fragment>
-      <GlobalStyle />
-      {children}
-    </Fragment>
-  </ThemeProvider>
-);
+class AppTheme extends Component {
+  render() {
+    console.log(this.props);
+    const { darkMode } = this.props.theme;
+    const theme = darkMode ? dark : light;
+    return (
+      <ThemeProvider theme={theme}>
+        <Fragment>
+          <GlobalStyle />
+          {this.props.children}
+        </Fragment>
+      </ThemeProvider>
+    );
+  }
+}
 
-export default AppTheme;
+const mapStateToProps = state => ({
+  theme: state.theme
+});
+export default connect(mapStateToProps)(AppTheme);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import {
   Header,
   Brand,
@@ -16,22 +17,42 @@ import {
   FaHome,
   FaSearch,
   FaBell,
-  FaEnvelope
+  FaEnvelope,
+  FaLightbulb,
+  FaRegLightbulb
 } from "react-icons/fa";
 import UI from "../UI";
 
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+import * as themeActions from "../../redux/actions/theme";
+
 const { Button } = UI;
 class Navbar extends Component {
-  state = {
-    isActive: false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isActive: false
+    };
+  }
+
+  changeTheme = () => {
+    const { changeTheme, theme } = this.props;
+    const { darkMode } = theme;
+    changeTheme({ darkMode: !darkMode });
   };
+
   togleMenu = prevState => {
     this.setState({ isActive: !prevState });
   };
   render() {
+    console.log(this.props);
     const { isActive } = this.state;
 
-    console.log(this.state);
+    const { darkMode } = this.props.theme;
+
     return (
       <Header>
         <Brand href="/">
@@ -68,6 +89,9 @@ class Navbar extends Component {
               </MenuItem>
             </Body>
             <Footer>
+              <Button onClick={() => this.changeTheme()}>
+                {darkMode ? <FaLightbulb /> : <FaRegLightbulb />}
+              </Button>
               <Button>Entrar</Button>
               <Button primary>Cadastre-se</Button>
             </Footer>
@@ -82,4 +106,13 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = state => ({
+  theme: state.theme
+});
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(themeActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar);
